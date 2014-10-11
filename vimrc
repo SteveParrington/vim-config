@@ -15,8 +15,6 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'AutoTag'
 Plugin 'ack.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'bogado/file-line'
 Plugin 'bufexplorer.zip'
 Plugin 'colorizer'
 Plugin 'digitaltoad/vim-jade'
@@ -51,6 +49,9 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-coffee-script'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vroom'
+Plugin 'klen/python-mode'
+Plugin 'pangloss/vim-javascript'
+
 
 if filereadable(expand("~/.vim.plugins.local"))
   source ~/.vim.plugins.local
@@ -75,6 +76,7 @@ nmap <space><space> <leader><leader>
 
 colorscheme adCode
 
+set mouse=a
 set autoindent
 set autowrite       " Writes on make/shell commands
 set backspace=start,indent,eol
@@ -214,6 +216,14 @@ nmap <C-\> :call <SID>SynStack()<CR>
 map <silent> <F5> <esc>:e %<CR>
 
 " ----------------------------------------------
+" Powerline setup
+" ----------------------------------------------
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+
+" ----------------------------------------------
 " Insert Mode Abbreviations
 " ----------------------------------------------
 
@@ -282,14 +292,6 @@ endif
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
-
-" Setup vim-airline to look nicer
-let g:airline_left_sep = ""
-let g:airline_left_alt_sep = ""
-let g:airline_right_sep = ""
-let g:airline_right_alt_sep = ""
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme = "powerlineish"
 
 autocmd FileType make set noexpandtab
 
@@ -533,4 +535,8 @@ let g:projectionist_heuristics ={
 " ----------------------------------------------
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
+endif
+
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
 endif
