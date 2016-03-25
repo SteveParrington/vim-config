@@ -53,6 +53,7 @@ Plugin 'vim-coffee-script'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vroom'
 Plugin 'pangloss/vim-javascript'
+Plugin 'christoomey/vim-tmux-navigator'
 
 if filereadable(expand("~/.vim.plugins.local"))
   source ~/.vim.plugins.local
@@ -89,6 +90,7 @@ set history=1000    " Remember a decent way back
 set laststatus=2    " Always show status line.
 set mousehide
 set nofoldenable    " Disable all folding of content
+set noswapfile
 set nowrap          " Line wrapping off
 set number          " line numbers
 set ruler           " Ruler on
@@ -188,7 +190,7 @@ nmap <silent> <Leader>sp :setlocal spell! spelllang=en_gb<CR>
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 "  <Leader>t to run tests
-map <silent> <leader>t :VroomRunTestFile<CR>
+map <silent> <leader>t :Dispatch bundle exec rspec %<CR>
 map <silent> <leader>T :VroomRunNearestTest<CR>
 
 "  <Leader>u to toggle undo history browser
@@ -248,6 +250,7 @@ map <C-l> <C-w>l
 " C-J and C-K to jump down and up between splits
 map <C-j> <C-w>j
 map <C-k> <C-w>k
+tnoremap <Leader>e <C-\><C-n>
 
 " ----------------------------------------------
 " Map Uncommon Filetype for Syntax Highlighting
